@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block app %}
+<video width="800" height="600" 
+  src="{{ url_for('static', filename=zhu) }}"  enable-progress-gesture controls>Error</video>
+<script src="video.js"></script>
+{% endblock %}

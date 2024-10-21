@@ -1,0 +1,9 @@
+<!Doctype html>
+<ul class="nav navbar-nav">
+  <li font-size:30px;><a href="{{ url_for('index') }}">Home</a></li>
+  <li font-size:30px;><a href="{{ url_for('hello_world', name='a') }}">Explore</a></li>
+</ul>
+{% block app %}
+<h1>请重写</h1>
+{% endblock %}
+</html>

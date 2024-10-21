@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block app %}
+{% for i in filenames %}
+<a href = "{{ url_for('play', path=i) }}"> {{ i }} </a>
+<br/>
+{% else %}
+<li> 没有值 </li>
+{% endfor %}
+{% endblock %}
