@@ -1,6 +1,15 @@
 {% extends "base.html" %}
-{% block app %}
-<video width="800" height="600" 
-  src="{{ url_for('static', filename=zhu) }}"  enable-progress-gesture controls>Error</video>
-<script src="video.js"></script>
+{% block app_content %}
+
+{% if filetype == 0 %}
+
+{% elif filetype == 1 %}
+<h1> 111 </h1>
+{% elif filetype == 2 %}
+<img src="{{ url_for('static', filename=mediafile) }}" alt="{{ mediafile }}" />
+{% else %}
+    # 所有条件都不满足时执行的代码
+{% endif %}
+{% set str1 = "/" %}
+<video width="300" height="200" src="{{ str1 + mediafile }}"  enable-progress-gesture controls>Error</video>
 {% endblock %}

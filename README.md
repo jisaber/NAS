@@ -7,18 +7,22 @@ G:.
 ├─.venv
 │  ├─Include
 |  └─...
+├─source // 你要放置的源文件
+│  ├─xxxx
+│  ├─1053
+│  │  ├─XXX.mp4
+│  └─XXXZ
 ├─static // 你要放置的源文件
 │  ├─xxxx
 │  ├─1053
 │  │  ├─XXX.mp4
 │  └─XXXZ
 ├─templates // 用于显示的模板文件
-│  ├─base.html
+│  ├─xxx.html
 │  ├─error.html
-│  ├─hello.html
-│  └─play.html
 ├─nas.py
-└─tool.py
+├─tool.py
+└─xxx.py
 ```
 # 简单运行
 1、先安装python
@@ -30,10 +34,11 @@ G:.
 python -m venv .venv
 .venv\Scripts\activate
 pip install Flask
+pip install flask-bootstrap
 ```
 3、运行flask即可
 ```
-flask --app nas run --debug --host=192.168.1.244 --port=520
+flask --app nas run --debug --host=192.168.2.244 --port=520
 注：nas表示主python文件名, debug打开调试模式, host本地IP, port=端口
 ```
 

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+<style>
+    .inline {
+      display: inline; /* 或者不设置，因为span是默认行内元素 */
+    }
+</style>
+
+{% block app_content %}
+{% for i, size, time, type in filenames %}
+<span class="inline"><a href = "{{ url_for('play', path=i) }}"> {{ i }} </a></span>
+<span class="inline"> {{ size }}</span>
+<span class="inline"> {{ time }}</span>
+<br/>
+{% else %}
+<li> 没有值 </li>
+{% endfor %}
+{% endblock %}
