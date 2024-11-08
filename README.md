@@ -7,11 +7,6 @@ G:.
 ├─.venv
 │  ├─Include
 |  └─...
-├─source // 你要放置的源文件
-│  ├─xxxx
-│  ├─1053
-│  │  ├─XXX.mp4
-│  └─XXXZ
 ├─static // 你要放置的源文件
 │  ├─xxxx
 │  ├─1053
