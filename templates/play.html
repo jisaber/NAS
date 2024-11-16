@@ -2,14 +2,17 @@
 {% block app_content %}
 
 {% if filetype == 0 %}
+    {% set str1 = "/" %}
+    <video width="300" height="200" src="{{ str1 + mediafile }}"  enable-progress-gesture controls>Error</video>
 
 {% elif filetype == 1 %}
 <h1> 111 </h1>
 {% elif filetype == 2 %}
-<img src="{{ url_for('static', filename=mediafile) }}" alt="{{ mediafile }}" />
+    {% set str1 = "/" %}
+    <img src="{{ str1 + mediafile }}" alt="{{ mediafile }}" />
 {% else %}
-    # 所有条件都不满足时执行的代码
+    <h1> {{ mediafile }} </h1>
 {% endif %}
-{% set str1 = "/" %}
-<video width="300" height="200" src="{{ str1 + mediafile }}"  enable-progress-gesture controls>Error</video>
+
+
 {% endblock %}

@@ -21,7 +21,7 @@ def human_size(size):
 def get_file_type(filename):
     video_extensions = ('mp4', 'avi', 'mkv', 'mov', 'wmv', 'flv', 'webm')
     audio_extensions = ('mp3')
-    image_extensions = ('jpg', 'png')
+    image_extensions = ('jpg', 'jpeg', 'png')
     if filename.lower().endswith(video_extensions):
         return FILR_TYPE_VIDEO
     elif filename.lower().endswith(audio_extensions):

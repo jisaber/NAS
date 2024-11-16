@@ -30,6 +30,8 @@ python -m venv .venv
 .venv\Scripts\activate
 pip install Flask
 pip install flask-bootstrap
+
+pip install psutil
 ```
 3、运行flask即可
 ```
