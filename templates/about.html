@@ -1,4 +1,7 @@
 {% extends "base.html" %}
 {% block app_content %}
-<li>123</li>
+    {% for i in envInfo %}
+        <span class="inline">{{ envInfo[i] }}</span><br/>
+    {% endfor %}
+    copyright©2024
 {% endblock %}

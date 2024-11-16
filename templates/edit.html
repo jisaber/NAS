@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block app_content %}
+
+<form method="post">
+{{ form.csrf_token }}
+
+{{ form.shuaxin.label }}
+<p> form.shuaxin </p>
+{% for msg in form.shuaxin.errors %}
+    <p> {{ msg }}</p>
+{% endfor %}
+{{ form.submit }}
+    
+</form>
+
+
+{% endblock %}

@@ -1,12 +1,20 @@
 from flask import Flask, send_from_directory
-from flask import render_template
+from flask import render_template, flash
 from flask_bootstrap import Bootstrap
 import os
 import tool
 import time
 import datetime
+
+from flask_wtf import FlaskForm
+from wtforms import SubmitField
+from wtforms.fields import StringField
+class MyForm(FlaskForm):
+    shuaxin = StringField(label = "shuaxin")
+    submit = SubmitField(label="提交")
  
 app = Flask(__name__)
+app.secret_key = "zxxxxxxxxx"
 
 bootstrap = Bootstrap(app)
 
@@ -34,28 +42,37 @@ def hello_world(name = None):
 
 @app.route("/play/<path:path>/")
 def play(path):
-    print(path)
-    return render_template('play.html', mediafile=path, filetype=tool.get_file_type(path))
+    base_name = path.rsplit('.', 1)[0]
+    imgfile = base_name + ".jpg"
+    return render_template('play.html', mediafile=path, imgfile=imgfile, filetype=tool.get_file_type(path))
 
 @app.route("/about")
 def about():
-    import psutil
- 
+    import psutil, platform
+    envInfo={}
     # 获取CPU的使用率，以百分比表示
     cpu_usage_percent = psutil.cpu_percent(interval=1)
-    print(f"当前CPU使用率: {cpu_usage_percent}%")
-    print(psutil.cpu_count())
-    print(psutil.cpu_count(logical=False))
-    import platform
-    
-    print(platform.architecture(),platform.uname())
+    envInfo["cpuusage"] = f"当前CPU使用率: {cpu_usage_percent}%"
+
+    envInfo["cpuCnt"] = "逻辑CPU个数:" + str(psutil.cpu_count()) + " 物理CPU个数:" + str(psutil.cpu_count(logical=False))
+    envInfo["platform"] = platform.architecture(),platform.uname()
 
     mem = psutil.virtual_memory()
-    print(tool.human_size(mem.total))
-    print(tool.human_size(mem.used))
-    print(tool.human_size(mem.free))
-    print(format(mem.used / mem.total * 100, '.2f') + "%")
-    return render_template('about.html')
+    envInfo["memusage"] = "空余内存/使用内存/总内存/内存使用率:" + \
+                        str(tool.human_size(mem.free)) + "/" + \
+                        str(tool.human_size(mem.used)) + "/" + \
+                        str(tool.human_size(mem.total)) + "/" + \
+                        str(format(mem.used / mem.total * 100, '.2f') + "%")
+    return render_template('about.html', envInfo=envInfo)
+
+@app.route("/edit", methods=['GET', 'POST'])
+def edit():
+    form = MyForm()
+    if form.validate_on_submit():
+            text = form.submit.data
+            print(text)
+            flash("1111")
+    return render_template('edit.html', form=form)
 
 
 @app.errorhandler(404)
